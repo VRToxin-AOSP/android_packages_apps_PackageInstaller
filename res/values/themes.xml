@@ -22,7 +22,7 @@
     </style>
 
     <style name="GrantPermissions"
-           parent="@android:style/Theme.DeviceDefault.Light.Dialog.NoActionBar">
+           parent="@android:style/Theme.Material.DayNight.Dialog.NoActionBar">
     </style>
 
 </resources>
