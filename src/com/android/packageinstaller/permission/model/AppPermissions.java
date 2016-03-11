@@ -23,8 +23,6 @@ import android.text.BidiFormatter;
 import android.text.TextPaint;
 import android.text.TextUtils;
 
-import com.android.packageinstaller.DeviceUtils;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -167,12 +165,9 @@ public final class AppPermissions {
     private static CharSequence loadEllipsizedAppLabel(Context context, PackageInfo packageInfo) {
         String label = packageInfo.applicationInfo.loadLabel(
                 context.getPackageManager()).toString();
-        String ellipsizedLabel = label.replace("\n", " ");
-        if (!DeviceUtils.isWear(context)) {
-            // Only ellipsize for non-Wear devices.
-            ellipsizedLabel = TextUtils.ellipsize(ellipsizedLabel, sAppLabelEllipsizePaint,
+        String noNewLineLabel = label.replace("\n", " ");
+        String ellipsizedLabel = TextUtils.ellipsize(noNewLineLabel, sAppLabelEllipsizePaint,
                 MAX_APP_LABEL_LENGTH_PIXELS, TextUtils.TruncateAt.END).toString();
-        }
         return BidiFormatter.getInstance().unicodeWrap(ellipsizedLabel);
     }
 }
